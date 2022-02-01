@@ -1,20 +1,25 @@
 <template>
-  <div class="album">
-      <div class="cover">
-          <img src="https://www.onstageweb.com/wp-content/uploads/2018/09/bon-jovi-new-jersey.jpg" alt="">
-      </div>
-
-      <div class="info">
-          <div class="title">New Jersey</div>
-          <div class="author">Bon Jovi</div>
-          <div class="year">1988</div>
-      </div>
-  </div>
+<div class="album">
+    <a href="#">
+        <div class="cover">
+            <img :src="info.poster" alt="">
+        </div>
+            
+        <div class="info">
+            <div class="title">{{info.title}}</div>
+            <div class="author">{{info.author}}</div>
+            <div class="year">{{info.year}}</div>
+        </div>
+    </a>
+</div>
 </template>
 
 <script>
 export default {
-    name: "Album"
+    name: "Album",
+    props: {
+        info: Object
+    }
 }
 </script>
 
@@ -34,6 +39,8 @@ export default {
 
     background-color: $primary-color;
 
+    overflow: hidden;
+
     .cover {
         width: 108px;
         height: 108px;
@@ -51,7 +58,7 @@ export default {
         text-align: center;
 
         .title {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: bold;
             color: $primary-text-color;
 
