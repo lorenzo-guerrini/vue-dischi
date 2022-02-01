@@ -1,14 +1,16 @@
 <template>
 <header>
     <div class="logo">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Spotify">
+        <a href="#">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Spotify">
+        </a>
     </div>
 </header>
 </template>
 
 <script>
 export default {
-name: "Header"
+    name: "Header"
 }
 </script>
 
