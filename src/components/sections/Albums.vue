@@ -1,6 +1,11 @@
 <template>
-<div class="container">
-    <Album v-for="(element, i) in albumsArray" :key="i" :info="element" /> 
+<div>
+    <div v-if="!loading" class="container">
+        <Album v-for="(element, i) in albumsArray" :key="i" :info="element" /> 
+    </div>
+    <div v-else class="loader">
+        Loading...
+    </div>
 </div>
 </template>
 
@@ -13,7 +18,8 @@ export default {
     data() {
         return {
             apiURL: "https://flynn.boolean.careers/exercises/api/array/music",
-            albumsArray: []
+            albumsArray: [],
+            loading: true
         }
     },
     components: {
@@ -23,6 +29,7 @@ export default {
         getAlbums() {
             axios.get(this.apiURL).then((apiResponse) => {
                 this.albumsArray = apiResponse.data.response;
+                this.loading = false;
             })
             .catch(function (error) {
                 console.log(error);
@@ -45,5 +52,12 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.loader {
+    text-align: center;
+    color: white;
+
+    padding-top: 50px;
 }
 </style>
