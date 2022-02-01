@@ -20,4 +20,8 @@ export default {
 
 <style lang="scss">
 @import "./assets/style/global.scss";
+
+#app {
+  min-width: 900px;
+}
 </style>
