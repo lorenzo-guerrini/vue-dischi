@@ -1,8 +1,6 @@
 <template>
 <main>
-    <div class="container">
-        <Albums />
-    </div>
+    <Albums />
 </main>
 </template>
 
@@ -20,7 +18,7 @@ export default {
 @import "../../assets/style/vars.scss";
 
 main {
-    height: calc(100vh - 48px);
+    min-height: calc(100vh - 48px);
     background-color: $bg-color;
 }
 </style>
