@@ -1,20 +1,18 @@
 <template>
-<div class="loader">
-    Loading...
-</div>
+  <div class="loader">Loading...</div>
 </template>
 
 <script>
 export default {
-name: "Loader"
-}
+  name: "Loader",
+};
 </script>
 
 <style lang="scss" scoped>
 .loader {
-    text-align: center;
-    color: white;
+  text-align: center;
+  color: white;
 
-    padding-top: 50px;
+  padding-top: 50px;
 }
 </style>

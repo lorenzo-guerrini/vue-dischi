@@ -1,36 +1,39 @@
 <template>
-<header>
+  <header>
     <div class="logo">
-        <a href="#">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Spotify">
-        </a>
+      <a href="#">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg"
+          alt="Spotify"
+        />
+      </a>
     </div>
-</header>
+  </header>
 </template>
 
 <script>
 export default {
-    name: "Header"
-}
+  name: "Header",
+};
 </script>
 
 <style lang="scss" scoped>
 @import "../../assets/style/vars.scss";
 
 header {
-    background-color: $primary-color;
-    height: 48px;
+  background-color: $primary-color;
+  height: 48px;
 
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .logo {
-    height: 32px;
-    margin-left: 15px;
+  height: 32px;
+  margin-left: 15px;
 
-    img {
-        height: 100%;
-    }
+  img {
+    height: 100%;
+  }
 }
 </style>
