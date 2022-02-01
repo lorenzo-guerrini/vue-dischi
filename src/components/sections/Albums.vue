@@ -3,13 +3,12 @@
     <div v-if="!loading" class="container">
         <Album v-for="(element, i) in albumsArray" :key="i" :info="element" /> 
     </div>
-    <div v-else class="loader">
-        Loading...
-    </div>
+    <Loader v-else />
 </div>
 </template>
 
 <script>
+import Loader from "../commons/Loader.vue";
 import axios from "axios";
 import Album from "../commons/Album.vue"
 
@@ -23,6 +22,7 @@ export default {
         }
     },
     components: {
+        Loader,
         Album
     },
     methods: {
@@ -52,12 +52,5 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-}
-
-.loader {
-    text-align: center;
-    color: white;
-
-    padding-top: 50px;
 }
 </style>
