@@ -1,9 +1,9 @@
 <template>
-  <header>
-      <div class="logo">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Spotify">
-      </div>
-  </header>
+<header>
+    <div class="logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Spotify">
+    </div>
+</header>
 </template>
 
 <script>
@@ -31,6 +31,4 @@ header {
         height: 100%;
     }
 }
-
-
 </style>
