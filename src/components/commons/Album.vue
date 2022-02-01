@@ -2,7 +2,7 @@
   <div class="album">
     <a href="#">
       <div class="cover">
-        <img :src="info.poster" alt="" />
+        <img :src="info.poster" :alt="info.title" />
       </div>
 
       <div class="info">
