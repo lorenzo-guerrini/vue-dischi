@@ -90,6 +90,10 @@ button {
   color: $primary-text-color;
 
   cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .filter {
