@@ -1,6 +1,10 @@
 <template>
   <div class="container">
-    <Search @searchTitle="searchTitle" @filterGenre="filterGenre" @filterArtist="filterArtist"/>
+    <Search
+      @searchTitle="searchTitle"
+      @filterGenre="filterGenre"
+      @filterArtist="filterArtist"
+    />
     <div v-if="!loading" class="albums-container">
       <Album v-for="(element, i) in searchedAlbums" :key="i" :info="element" />
     </div>
@@ -60,25 +64,37 @@ export default {
     searchedAlbums() {
       return this.albumsArray.filter((album) => {
         if (this.inputGenre == "All" && this.inputArtist == "All") {
-          return album.title.toLowerCase().includes(this.inputSearch.toLowerCase());
+          return album.title
+            .toLowerCase()
+            .includes(this.inputSearch.toLowerCase());
         }
 
-        if(this.inputGenre != "All" && this.inputArtist == "All") {
-          return album.title.toLowerCase().includes(this.inputSearch.toLowerCase()) &&
-          album.genre.toLowerCase().includes(this.inputGenre.toLowerCase());
+        if (this.inputGenre != "All" && this.inputArtist == "All") {
+          return (
+            album.title
+              .toLowerCase()
+              .includes(this.inputSearch.toLowerCase()) &&
+            album.genre.toLowerCase().includes(this.inputGenre.toLowerCase())
+          );
         }
 
-        if(this.inputGenre == "All" && this.inputArtist != "All") {
-          return album.title.toLowerCase().includes(this.inputSearch.toLowerCase()) &&
-          album.author.toLowerCase().includes(this.inputArtist.toLowerCase());
+        if (this.inputGenre == "All" && this.inputArtist != "All") {
+          return (
+            album.title
+              .toLowerCase()
+              .includes(this.inputSearch.toLowerCase()) &&
+            album.author.toLowerCase().includes(this.inputArtist.toLowerCase())
+          );
         }
 
-        return album.title.toLowerCase().includes(this.inputSearch.toLowerCase()) &&
+        return (
+          album.title.toLowerCase().includes(this.inputSearch.toLowerCase()) &&
           album.genre.toLowerCase().includes(this.inputGenre.toLowerCase()) &&
-          album.author.toLowerCase().includes(this.inputArtist.toLowerCase());
-      })
-    }
-  }
+          album.author.toLowerCase().includes(this.inputArtist.toLowerCase())
+        );
+      });
+    },
+  },
 };
 </script>
 
