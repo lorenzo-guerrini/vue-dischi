@@ -22,8 +22,8 @@ export default {
       albumsArray: [],
       loading: true,
       inputSearch: "",
-      inputGenre: "all",
-      inputArtist: "all",
+      inputGenre: "All",
+      inputArtist: "All",
     };
   },
   components: {
@@ -59,16 +59,16 @@ export default {
   computed: {
     searchedAlbums() {
       return this.albumsArray.filter((album) => {
-        if (this.inputGenre == "all" && this.inputArtist == "all") {
+        if (this.inputGenre == "All" && this.inputArtist == "All") {
           return album.title.toLowerCase().includes(this.inputSearch.toLowerCase());
         }
 
-        if(this.inputGenre != "all" && this.inputArtist == "all") {
+        if(this.inputGenre != "All" && this.inputArtist == "All") {
           return album.title.toLowerCase().includes(this.inputSearch.toLowerCase()) &&
           album.genre.toLowerCase().includes(this.inputGenre.toLowerCase());
         }
 
-        if(this.inputGenre == "all" && this.inputArtist != "all") {
+        if(this.inputGenre == "All" && this.inputArtist != "All") {
           return album.title.toLowerCase().includes(this.inputSearch.toLowerCase()) &&
           album.author.toLowerCase().includes(this.inputArtist.toLowerCase());
         }
