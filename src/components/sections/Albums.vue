@@ -1,6 +1,8 @@
 <template>
   <div class="container">
     <Search
+      :genres="genresArray"
+      :authors="authorsArray"
       @searchTitle="searchTitle"
       @filterGenre="filterGenre"
       @filterArtist="filterArtist"
@@ -24,10 +26,12 @@ export default {
     return {
       apiURL: "https://flynn.boolean.careers/exercises/api/array/music",
       albumsArray: [],
-      loading: true,
+      genresArray: [],
+      authorsArray: [],
       inputSearch: "",
       inputGenre: "All",
       inputArtist: "All",
+      loading: true,
     };
   },
   components: {
@@ -40,7 +44,24 @@ export default {
       axios
         .get(this.apiURL)
         .then((apiResponse) => {
+          //Album
           this.albumsArray = apiResponse.data.response;
+
+          //Generi
+          this.genresArray.push("All");
+          let tempGenresArray = apiResponse.data.response.map((album) => {
+            return album.genre;
+          });
+          Array.prototype.push.apply(this.genresArray, tempGenresArray);
+
+          //Autori
+          this.authorsArray.push("All");
+          let tempAuthorsArray = apiResponse.data.response.map((album) => {
+            return album.author;
+          });
+          Array.prototype.push.apply(this.authorsArray, tempAuthorsArray);
+
+          //Fine loading
           this.loading = false;
         })
         .catch(function (error) {

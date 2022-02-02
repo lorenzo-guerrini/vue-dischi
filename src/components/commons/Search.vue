@@ -22,7 +22,7 @@
         v-model="inputArtist"
         @change="$emit('filterArtist', inputArtist)"
       >
-        <option v-for="(artist, i) in artists" :key="i">{{ artist }}</option>
+        <option v-for="(artist, i) in authors" :key="i">{{ artist }}</option>
       </select>
     </div>
   </div>
@@ -31,22 +31,12 @@
 <script>
 export default {
   name: "Search",
+  props: {
+    genres: [],
+    authors: [],
+  },
   data() {
     return {
-      genres: ["All", "Rock", "Pop", "Jazz", "Metal"],
-      artists: [
-        "All",
-        "Bon Jovi",
-        "Queen",
-        "Sting",
-        "Steve Gadd Band",
-        "Iron Maiden",
-        "Eric Clapton",
-        "Deep Purple",
-        "Metallica",
-        "Dave Weckl",
-        "Michael Jacjson",
-      ],
       inputText: "",
       inputGenre: "All",
       inputArtist: "All",
