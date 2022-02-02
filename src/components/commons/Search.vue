@@ -5,10 +5,10 @@
         type="text"
         id="search-bar"
         v-model="inputText"
-        placeholder="Cerca per titolo"
+        placeholder="Search title"
         @keyup="$emit('searchTitle', inputText)"
       />
-      <button @click="$emit('search', inputText)">Cerca</button>
+      <button @click="$emit('search', inputText)">Search</button>
     </div>
     <div class="filter">
       <span>Filter by genre: </span>
