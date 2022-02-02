@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <!-- Ricerca per titolo -->
     <div>
       <input
         type="text"
@@ -10,12 +11,16 @@
       />
       <button @click="$emit('search', inputText)">Search</button>
     </div>
+
+    <!-- Filtro Genere -->
     <div class="filter">
       <span>Filter by genre: </span>
       <select v-model="inputGenre" @change="$emit('filterGenre', inputGenre)">
         <option v-for="(genre, i) in genres" :key="i">{{ genre }}</option>
       </select>
     </div>
+
+    <!-- Filtro Autori -->
     <div class="filter">
       <span>Filter by Author: </span>
       <select

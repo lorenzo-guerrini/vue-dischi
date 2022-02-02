@@ -40,21 +40,22 @@ export default {
     Album,
   },
   methods: {
+    //Ottiene dall'API l'array degli album e lo usa per riempire albumsArray, genresArray e authorsArray
     getAlbums() {
       axios
         .get(this.apiURL)
         .then((apiResponse) => {
-          //Album
+          //albumsArray
           this.albumsArray = apiResponse.data.response;
 
-          //Generi
+          //genresArray
           this.genresArray.push("All");
           let tempGenresArray = apiResponse.data.response.map((album) => {
             return album.genre;
           });
           Array.prototype.push.apply(this.genresArray, tempGenresArray);
 
-          //Autori
+          //authorsArray
           this.authorsArray.push("All");
           let tempAuthorsArray = apiResponse.data.response.map((album) => {
             return album.author;
@@ -84,12 +85,14 @@ export default {
   computed: {
     searchedAlbums() {
       return this.albumsArray.filter((album) => {
+        //Filtri attivi: nessuno
         if (this.inputGenre == "All" && this.inputAuthor == "All") {
           return album.title
             .toLowerCase()
             .includes(this.inputSearch.toLowerCase());
         }
 
+        //Filtri attivi: genere
         if (this.inputGenre != "All" && this.inputAuthor == "All") {
           return (
             album.title
@@ -99,6 +102,7 @@ export default {
           );
         }
 
+        //Filtri attivi: autore
         if (this.inputGenre == "All" && this.inputAuthor != "All") {
           return (
             album.title
@@ -108,6 +112,7 @@ export default {
           );
         }
 
+        //Filtri attivi: autore e genere
         return (
           album.title.toLowerCase().includes(this.inputSearch.toLowerCase()) &&
           album.genre.toLowerCase().includes(this.inputGenre.toLowerCase()) &&
