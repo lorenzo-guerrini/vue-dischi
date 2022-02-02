@@ -5,7 +5,7 @@
       :authors="authorsArray"
       @searchTitle="searchTitle"
       @filterGenre="filterGenre"
-      @filterArtist="filterArtist"
+      @filterAuthor="filterAuthor"
     />
     <div v-if="!loading" class="albums-container">
       <Album v-for="(element, i) in searchedAlbums" :key="i" :info="element" />
@@ -30,7 +30,7 @@ export default {
       authorsArray: [],
       inputSearch: "",
       inputGenre: "All",
-      inputArtist: "All",
+      inputAuthor: "All",
       loading: true,
     };
   },
@@ -74,8 +74,8 @@ export default {
     filterGenre(input) {
       this.inputGenre = input;
     },
-    filterArtist(input) {
-      this.inputArtist = input;
+    filterAuthor(input) {
+      this.inputAuthor = input;
     },
   },
   created() {
@@ -84,13 +84,13 @@ export default {
   computed: {
     searchedAlbums() {
       return this.albumsArray.filter((album) => {
-        if (this.inputGenre == "All" && this.inputArtist == "All") {
+        if (this.inputGenre == "All" && this.inputAuthor == "All") {
           return album.title
             .toLowerCase()
             .includes(this.inputSearch.toLowerCase());
         }
 
-        if (this.inputGenre != "All" && this.inputArtist == "All") {
+        if (this.inputGenre != "All" && this.inputAuthor == "All") {
           return (
             album.title
               .toLowerCase()
@@ -99,19 +99,19 @@ export default {
           );
         }
 
-        if (this.inputGenre == "All" && this.inputArtist != "All") {
+        if (this.inputGenre == "All" && this.inputAuthor != "All") {
           return (
             album.title
               .toLowerCase()
               .includes(this.inputSearch.toLowerCase()) &&
-            album.author.toLowerCase().includes(this.inputArtist.toLowerCase())
+            album.author.toLowerCase().includes(this.inputAuthor.toLowerCase())
           );
         }
 
         return (
           album.title.toLowerCase().includes(this.inputSearch.toLowerCase()) &&
           album.genre.toLowerCase().includes(this.inputGenre.toLowerCase()) &&
-          album.author.toLowerCase().includes(this.inputArtist.toLowerCase())
+          album.author.toLowerCase().includes(this.inputAuthor.toLowerCase())
         );
       });
     },

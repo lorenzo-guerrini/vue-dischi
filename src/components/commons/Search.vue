@@ -17,12 +17,12 @@
       </select>
     </div>
     <div class="filter">
-      <span>Filter by artist: </span>
+      <span>Filter by Author: </span>
       <select
-        v-model="inputArtist"
-        @change="$emit('filterArtist', inputArtist)"
+        v-model="inputAuthor"
+        @change="$emit('filterAuthor', inputAuthor)"
       >
-        <option v-for="(artist, i) in authors" :key="i">{{ artist }}</option>
+        <option v-for="(author, i) in authors" :key="i">{{ author }}</option>
       </select>
     </div>
   </div>
@@ -39,7 +39,7 @@ export default {
     return {
       inputText: "",
       inputGenre: "All",
-      inputArtist: "All",
+      inputAuthor: "All",
     };
   },
 };
