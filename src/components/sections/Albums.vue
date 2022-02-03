@@ -26,8 +26,8 @@ export default {
     return {
       apiURL: "https://flynn.boolean.careers/exercises/api/array/music",
       albumsArray: [],
-      genresArray: [],
-      authorsArray: [],
+      genresArray: ["All"],
+      authorsArray: ["All"],
       inputSearch: "",
       inputGenre: "All",
       inputAuthor: "All",
@@ -49,8 +49,6 @@ export default {
           this.albumsArray = apiResponse.data.response;
 
           //genresArray
-          this.genresArray.push("All");
-
           apiResponse.data.response.forEach((album) => {
             if (!this.genresArray.includes(album.genre)) {
               this.genresArray.push(album.genre);
@@ -58,8 +56,6 @@ export default {
           });
 
           //authorsArray
-          this.authorsArray.push("All");
-
           apiResponse.data.response.forEach((album) => {
             if (!this.authorsArray.includes(album.author)) {
               this.authorsArray.push(album.author);
