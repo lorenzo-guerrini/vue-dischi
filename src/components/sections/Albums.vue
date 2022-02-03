@@ -50,17 +50,21 @@ export default {
 
           //genresArray
           this.genresArray.push("All");
-          let tempGenresArray = apiResponse.data.response.map((album) => {
-            return album.genre;
+
+          apiResponse.data.response.forEach((album) => {
+            if (!this.genresArray.includes(album.genre)) {
+              this.genresArray.push(album.genre);
+            }
           });
-          Array.prototype.push.apply(this.genresArray, tempGenresArray);
 
           //authorsArray
           this.authorsArray.push("All");
-          let tempAuthorsArray = apiResponse.data.response.map((album) => {
-            return album.author;
+
+          apiResponse.data.response.forEach((album) => {
+            if (!this.authorsArray.includes(album.author)) {
+              this.authorsArray.push(album.author);
+            }
           });
-          Array.prototype.push.apply(this.authorsArray, tempAuthorsArray);
 
           //Fine loading
           this.loading = false;
