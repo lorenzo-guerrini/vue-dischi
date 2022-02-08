@@ -9,7 +9,7 @@
         placeholder="Search title"
         @keyup="$emit('searchTitle', inputText)"
       />
-      <button @click="$emit('search', inputText)">Search</button>
+      <button @click="$emit('searchTitle', inputText)">Search</button>
     </div>
 
     <!-- Filtro Genere -->
